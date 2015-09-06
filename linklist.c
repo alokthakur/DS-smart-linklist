@@ -4,7 +4,7 @@
 linklist* create_node(int data)
 {
   linklist* newnode = NULL;
-  newnode = (linklist *) malloc(sizeof(linklist));
+  newnode = malloc(sizeof(linklist));
   if(newnode)
   {
     newnode->linkdata.data = data;
@@ -15,7 +15,7 @@ linklist* create_node(int data)
 linklist* create_head()
 {
   linklist* newnode = NULL;
-  newnode = (linklist *) malloc(sizeof(linklist));
+  newnode = malloc(sizeof(linklist));
   if(newnode)
   {
     newnode->linkdata.len = 0;
@@ -24,7 +24,7 @@ linklist* create_head()
 }
   
 
-add_node(linklist **head, int data)
+int add_node(linklist **head, int data)
 {
   if(*head == NULL)
   {
@@ -49,6 +49,7 @@ int insert_node(linklist **head, int data, int pos)
   if(*head == NULL)
   {
     printf("not possible to insert \n");
+    return 1;
   }
   else
   {
@@ -76,6 +77,7 @@ int insert_node(linklist **head, int data, int pos)
     if(pos)
       printf("not a valid position \n");
   }      
+  return 0;
 }
 void display_list(linklist *head)
 {
@@ -89,7 +91,10 @@ void display_list(linklist *head)
   
 int getlen_list(linklist *head)
 {
-  return head->linkdata.len;
+  if(head)
+    return head->linkdata.len;
+  else
+    return -1;
 }
 
 int nthfromlast(linklist *head, int n)

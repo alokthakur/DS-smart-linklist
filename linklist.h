@@ -5,7 +5,7 @@ struct linklist
 {
   union data
   {
-    int len;
+    size_t len;
     int data;
   }linkdata;
   struct linklist *next;

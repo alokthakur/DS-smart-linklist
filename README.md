@@ -7,7 +7,7 @@ Storing N nodes would require memory of N+1 nodes.
 Node - 
 strcut linklist{
   union data{
-    int len;
+    size_t len;
     int data;
     }linkdata;
     struct linklist *next;
